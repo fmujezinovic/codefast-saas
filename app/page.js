@@ -1,5 +1,4 @@
 import ButtonLogin from "@/components/ButtonLogin";
-import ListItem from "@/components/ListItems";
 import FAQListItem from "@/components/FAQListItem";
 import Image from "next/image";
 import productDemo from "./productDemo.jpeg";
@@ -35,7 +34,11 @@ export default function Home() {
       </section>
       {/* HERO ne rabis bg-base-100*/}
       <section className="bg-base-100 lg:text-left text-center py-32 px-8 max-w-5xl mx-auto flex flex-col lg:flex-row gap-14 items-center lg:items-start">
-        <Image src={productDemo} alt="Product demo" className="w-96 rounded-xl saturate-200" />
+        <Image
+          src={productDemo}
+          alt="Product demo"
+          className="w-96 rounded-xl saturate-200"
+        />
 
         <div>
           <h1 className="text-4xl font-extrabold mb-6">
@@ -45,9 +48,8 @@ export default function Home() {
             Create a feedback board in minutes, prioritize features, and build
             products your customers will love.
           </div>
-        <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+          <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
         </div>
-
       </section>
       {/* PRICING */}
       <section className="bg-base-200" id="pricing">
