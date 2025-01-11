@@ -1,5 +1,3 @@
-import { Children } from "react";
-
 const ListItem = ({ children }) => {
   return (
     <li className="flex gap-2 items-center">
