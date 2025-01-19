@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 
 const FormNewBoard = () => {
   const [name, setName] = useState("");
@@ -13,23 +14,9 @@ const FormNewBoard = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/board", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-        }),
-      });
+      const data = await axios.post("/api/board",{name});
+      console.log(data);
 
-      if (!response.ok) {
-        throw new Error("Napaka pri ustvarjanju boarda");
-      }
-
-        const data = await response.json();
-        console.log(data);
-        
       // Resetuj polje za unos nakon uspešnog kreiranja boarda
       setName("");
     } catch (error) {
