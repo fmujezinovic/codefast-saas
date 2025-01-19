@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const FormNewBoard = () => {
-    const router = useRouter();
+  const router = useRouter();
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,12 +19,14 @@ const FormNewBoard = () => {
     try {
       const data = await axios.post("/api/board", { name });
 
-
       // Resetuj polje za unos nakon uspešnog kreiranja boarda
-        setName("");
-        router.refresh();
-        
+      setName("");
+      toast.success("Board created!");
+      router.refresh();
     } catch (error) {
+      const errorMessage =
+        error.response.data.error || error.message || "Something went wrong";
+      toast.error(errorMessage);
       console.error(error.message);
     } finally {
       setIsLoading(false);
