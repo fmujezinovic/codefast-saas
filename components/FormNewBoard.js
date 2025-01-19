@@ -13,20 +13,24 @@ const FormNewBoard = () => {
     setIsLoading(true);
 
     try {
-      // Simulacija pošiljanja podatkov na API
       const response = await fetch("/api/board", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify({
+          name,
+        }),
       });
 
       if (!response.ok) {
         throw new Error("Napaka pri ustvarjanju boarda");
       }
 
-      // Resetiraj stanje po uspešni oddaji
+        const data = await response.json();
+        console.log(data);
+        
+      // Resetuj polje za unos nakon uspešnog kreiranja boarda
       setName("");
     } catch (error) {
       console.error(error.message);
