@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const FormNewBoard = () => {
+    const router = useRouter();
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,11 +16,13 @@ const FormNewBoard = () => {
     setIsLoading(true);
 
     try {
-      const data = await axios.post("/api/board",{name});
-      console.log(data);
+      const data = await axios.post("/api/board", { name });
+
 
       // Resetuj polje za unos nakon uspešnog kreiranja boarda
-      setName("");
+        setName("");
+        router.refresh();
+        
     } catch (error) {
       console.error(error.message);
     } finally {
