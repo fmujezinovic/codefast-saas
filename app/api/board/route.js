@@ -29,6 +29,13 @@ export async function POST(req) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
+    if (!user.hasAccess) {
+      return NextResponse.json(
+        { error: "Please subscibe first" },
+        { status: 403 }
+      );
+    }
+
     const board = await Board.create({
       userId: user._id,
       name: body.name,
@@ -68,6 +75,13 @@ export async function DELETE(req) {
     await connectMongo();
 
     const user = await User.findById(session.user.id);
+
+    if (!user.hasAccess) {
+      return NextResponse.json(
+        { error: "Please subscibe first" },
+        { status: 403 }
+      );
+    }
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });

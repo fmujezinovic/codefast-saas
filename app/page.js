@@ -18,7 +18,7 @@ export default async function Home() {
     <main>
       {/* HEADER */}
       <section className="bg-base-200">
-        <div className="max-w-5xl mx-auto  flex justify-between items-center px-8 py-2">
+        <div className="max-w-5xl mx-auto flex justify-between items-center px-8 py-2">
           <div>CodeFastSaas</div>
           <div className="space-x-4 max-md:hidden">
             <a className="link link-hover" href="#pricing">

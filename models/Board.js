@@ -14,3 +14,4 @@ const boardSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.Board || mongoose.model("Board", boardSchema);
+  
