@@ -20,7 +20,7 @@ export async function POST(req) {
     const { data, type } = event;
 
     if (type === "checkout.session.completed") {
-      // Grand access to the product
+      // Grand access to the product ponovna proba 
 
       await connectMongo();
 
